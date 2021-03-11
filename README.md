@@ -8,7 +8,9 @@ Hope my codes can also inspire people in this challenging journey.
 <br><br>
 
 #### Project **Memorize**:
- * [Assiginment1](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment1)
+ * [Assignment1](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment1)
+<br>
+ * [Assignment2](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment2)
 <br>
 
 ### Projects
