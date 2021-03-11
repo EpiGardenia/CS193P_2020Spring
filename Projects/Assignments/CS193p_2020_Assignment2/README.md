@@ -16,4 +16,6 @@
 
 
 ## Result
-* Landscape
+![Demo](CS193p_2020_Assignment2/Assignment2.gif)
+![Landscape](CS193p_2020_Assignment2/landscape.png)
+
