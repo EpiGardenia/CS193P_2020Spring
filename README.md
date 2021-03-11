@@ -1,7 +1,10 @@
 # CS193P_2020Spring
 
+## Original Course Materials
+Download from https://cs193p.sites.stanford.edu/
+<br><br>
 
-## Project & Assignment
+## Projects
 ### Assignments 
 I am benefited a lot from others' knowledge sharing. <br>
 Hope my codes can also inspire people in this challenging journey.
@@ -12,12 +15,11 @@ Hope my codes can also inspire people in this challenging journey.
  * [Assignment2](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment2)
 <br>
 
-### Projects
+### Lectures
 Lecture code with my change (adapt to Xcode12, or adding notes)
-<br><br>
-
-## Original Course Materials
-Download from https://cs193p.sites.stanford.edu/
+* [Lecture 2](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture2)
+* [Lecture 3](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture3)
+* [Lecture 4](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture4)
 <br><br>
 
 ## CS193p_2020Sprint_Original_Materials.zip
