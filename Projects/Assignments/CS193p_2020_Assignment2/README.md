@@ -16,6 +16,7 @@
 
 
 ## Result
-![Demo](CS193p_2020_Assignment2/Assignment2.gif)
-![Landscape](CS193p_2020_Assignment2/landscape.png)
-
+![Demo](Assignment2.gif)
+<br>
+<br>
+<img src="landscape.png" width="600" height="300">
