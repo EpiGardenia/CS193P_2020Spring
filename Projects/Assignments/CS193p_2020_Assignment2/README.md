@@ -16,7 +16,7 @@
 
 
 ## Result
-![Demo](Assignment2.gif)
+![Demo](Demo/Assignment2.gif)
 <br>
 <br>
-<img src="landscape.png" width="600" height="300">
+<img src="Demo/landscape.png" width="600" height="300">
