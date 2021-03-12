@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+
+/*
+The coordinating system in IOS is (0,0) on top left corner,
+ while in geometry class, it is in left down corner,
+ thus the clockwise is reversed
+
+
+ */
 struct Pie: Shape {
     var startAngle: Angle
     var endAngle: Angle
