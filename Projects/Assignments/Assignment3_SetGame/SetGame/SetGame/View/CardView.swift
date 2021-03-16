@@ -20,25 +20,53 @@ struct CardView: View {
         }
     }
 
-    func body(size: CGSize) -> some View {
+    private func body(size: CGSize) -> some View {
         ZStack{
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(lineWidth: 3)
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(borderColor)
+                .opacity(backGroundOpacity)
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(lineWidth: strokeWidth)
             VStack{
                 ForEach(0..<card.number.number) { _ in
                     SetGameViewModel.getSymbolWithColorShading(symbol: card.symbol, color: card.color, shading: card.shading)
-                        .font(.system(size: min(size.height, size.width)*0.25))
+                        .font(.system(size: fontSize(areaSize: size)))
                 }
-            } .padding()
+            }
+            .foregroundColor(.orange)
+            .padding(padInsideCard)
         }
         .aspectRatio(2/3, contentMode: .fit)
-    }    
+    }
+
+
+    private var borderColor: Color {
+        if card.isMatched {
+            return  Color.green
+        } else if card.isUnMatched {
+            return Color.pink
+        } else if card.isSelected {
+            return Color.purple
+        } else {
+            return Color.white
+        }
+    }
+
+
+    // MARK: - Drawing Constants
+    private let padInsideCard: CGFloat = 10
+    private let cornerRadius: CGFloat = 20
+    private let strokeWidth: CGFloat = 3
+    private let backGroundOpacity: Double = 0.5
+    private func fontSize(areaSize: CGSize) -> CGFloat {
+       return min(areaSize.height, areaSize.width)*0.25
+    }
+
+
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(of: SetGameViewModel.cardExample)
+            CardView(of: SetGameViewModel.cardExample)
     }
 }

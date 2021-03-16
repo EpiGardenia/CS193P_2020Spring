@@ -93,9 +93,9 @@
 		1A3BC40025FE6A3500F2BCD9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A3BC41B25FF60BE00F2BCD9 /* CardView.swift */,
 				1A3BC40D25FE78EE00F2BCD9 /* Grid.swift */,
 				1A3BC40725FE6A6D00F2BCD9 /* SetGameView.swift */,
-				1A3BC41B25FF60BE00F2BCD9 /* CardView.swift */,
 				1A3BC41E25FFA52F00F2BCD9 /* SymbolView.swift */,
 			);
 			path = View;

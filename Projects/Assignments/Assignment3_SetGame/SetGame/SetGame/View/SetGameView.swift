@@ -22,27 +22,29 @@ struct SetGameView: View {
         VStack(alignment: .center) {
             Grid(viewModel.cardsOnTable) { card in
                 CardView(of: card)
-                    .padding(5)
+                    .padding(3)
                     .onTapGesture {
-                        print("\(card.number), \(card.symbol)")
+                        viewModel.select(card: card)
                     }
             }
-            .padding()
             .foregroundColor(.orange)
             .onAppear {
                 viewModel.getInitialCardsOnTable()
             }
 
             HStack {
-                Button(action:{}) {
+                Button(action:{viewModel.startNewGame()}) {
                     roundFontRectButton(text: "New Game", size: size)
                 }
+                ZStack{
                 RoundedRectangle(cornerRadius: 5)
                     .foregroundColor(.orange)
                     .frame(width: size.width*0.3)
-                Button(action:{}) {
-                    roundFontRectButton(text: "Deal Three Cards", size: size)
+                    Text("Score: \(viewModel.score)")
                 }
+                Button(action: { viewModel.dealThreeCards() }) {
+                    roundFontRectButton(text: "Deal Three Cards", size: size)
+                }.disabled(viewModel.cardsInDeck.count == 0)
             }
             .frame(height: size.height*0.2)
             .padding(.bottom)

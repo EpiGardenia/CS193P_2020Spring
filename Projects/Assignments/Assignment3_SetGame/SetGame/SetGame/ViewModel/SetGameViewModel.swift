@@ -10,6 +10,9 @@ import SwiftUI
 
 class SetGameViewModel: ObservableObject {
     typealias setGame = SetGame<SetColor, SetNumber, SetSymbol, SetShading>
+    var score: Int {
+        model.getScore()
+    }
     
     @Published var model: SetGame<SetColor, SetNumber, SetSymbol, SetShading>
     
@@ -24,17 +27,19 @@ class SetGameViewModel: ObservableObject {
         model.getCardsOnTable()
         
     }
+
+
     
     func getInitialCardsOnTable() {
         model.getInitialCardsOnTable()
     }
     
     enum SetColor: CaseIterable, Equatable {
-        case green, red, blue
+        case gray, red, blue
         var color: Color {
             switch self {
-                case .green:
-                    return Color.green
+                case .gray:
+                    return Color.gray
                 case .blue:
                     return Color.blue
                 case .red:
@@ -96,10 +101,24 @@ class SetGameViewModel: ObservableObject {
     
     func startNewGame() {
         model = SetGame<SetColor, SetNumber, SetSymbol, SetShading>()
+        model.getInitialCardsOnTable()
     }
-    
+
+    func dealThreeCards() {
+        model.dealThreeCards()
+    }
+
+    func select(card: setGame.Card) {
+        model.select(card)
+        print("isMatched:\(card.isMatched), isUnMatched: \(card.isUnMatched), isSelected:\(card.isSelected)")
+    }
+
     static var cardExample: setGame.Card {
-        setGame.Card(id: 1, color: .green, number: .three, symbol: .squiggles, shading: .solid)
+       var  model = SetGame<SetColor, SetNumber, SetSymbol, SetShading>()
+        model.getInitialCardsOnTable()
+        let card = model.cardsOnTable[0]
+        model.select(card)
+        return card
     }
     
 }

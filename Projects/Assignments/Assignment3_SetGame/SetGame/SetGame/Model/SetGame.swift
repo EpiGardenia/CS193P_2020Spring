@@ -12,21 +12,32 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
     ColorContent: CaseIterable, NumberContent: CaseIterable,
     SymbolContent: CaseIterable, ShadingContent: CaseIterable {
 
+    private var score = 0
     private(set) var cardsInDeck: [Card]
     private(set) var cardsOnTable: [Card]
-    private(set) var matchedSetOnTable = false
+    private var matchedSetOnTable: Bool {
+        get {
+            cardsOnTable.filter{ $0.isMatched }.count == 3
+        }
+    }
     private(set) var selectedIndexes: [Int] {
         get {
             cardsOnTable.indices.filter{ cardsOnTable[$0].isSelected }
         }
         set {
-            _ = cardsOnTable.indices.map{cardsOnTable[$0].isSelected = false }
+            //print("set selectedIndexes = \(newValue)")
+            _ = cardsOnTable.indices.map{cardsOnTable[$0].isSelected = false;
+                cardsOnTable[$0].isMatched = false; cardsOnTable[$0].isUnMatched = false }
             _ = newValue.map{cardsOnTable[$0].isSelected = true }
 
             if newValue.count == 3 {
                 if Self.isValidSet(selectedCards: [cardsOnTable[newValue[0]], cardsOnTable[newValue[1]], cardsOnTable[newValue[2]]]) {
                     _ = newValue.map{cardsOnTable[$0].isMatched = true }
-                }
+                    score += 2
+                } else {
+                    _ = newValue.map{cardsOnTable[$0].isUnMatched = true}
+                    score -= 1
+            }
             }
         }
     }
@@ -39,17 +50,21 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
         for color in ColorContent.allCases {
             for number in NumberContent.allCases {
                 for symbol in SymbolContent.allCases {
-                    for shading in ShadingContent.allCases {
-                        newDeck.append(Card(id: id, color: color, number: number, symbol: symbol, shading: shading))
+       //             for shading in ShadingContent.allCases {
+                newDeck.append(Card(id: id, color: color, number: number, symbol: symbol, shading: ShadingContent.allCases.first!))
+                        //newDeck.append(Card(id: id, color: color, number: number, symbol: symbol, shading: shading))
                         id += 1
                     }
                 }
-            }
+//            }
         }
 
-        return newDeck.shuffled()
+        return Array(newDeck.shuffled())
     }
 
+    func getScore() -> Int {
+        return score
+    }
 
     func getCardsInDeck() -> [Card] {
         return cardsInDeck
@@ -80,8 +95,12 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
 
     mutating func dealThreeCards() {
         if cardsInDeck.count >= 3 {
-            cardsOnTable.append(contentsOf: self.cardsInDeck[0..<3])
-            cardsInDeck.removeFirst(3)
+            if matchedSetOnTable {
+                replaceNewCards()
+            } else {
+                cardsOnTable.append(contentsOf: self.cardsInDeck[0..<3])
+                cardsInDeck.removeFirst(3)
+            }
         }
     }
 
@@ -93,6 +112,14 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
             selectedCards.map{$0.number}.validSetType()
     }
 
+    private mutating func replaceNewCards() {
+            for _ in 0..<3 {
+                // refill new card in matched position
+                let newCard =  cardsInDeck.removeFirst()
+                cardsOnTable[selectedIndexes.first!] = newCard
+                cardsArchive.append(newCard)
+            }
+    }
 
 
     mutating func select(_ card: Card) {
@@ -105,20 +132,27 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
                 // there is a matched set, and user click on 4th card, match fly away and refill, hightlight 4th card
                 else if !selectedIndexes.contains(selectedCardIndex) {
                     if cardsInDeck.count >= 3 {
-                        for index in 0..<3 {
-                            // refill new card in matched position
-                            let newCard =  cardsInDeck.removeFirst()
-                            cardsOnTable[selectedIndexes[index]] = newCard
-                            cardsArchive.append(newCard)
+                        replaceNewCards()
+                        // only 4th is selected
+                        selectedIndexes = [selectedCardIndex]
+                    } else {
+                        for index in selectedIndexes.sorted(by: >) {
+                            cardsOnTable.remove(at: index)
                         }
+                        selectedIndexes = [cardsOnTable.firstIndex(matching: card)!]
                     }
-                    // only 4th is selected
-                    selectedIndexes = [selectedCardIndex]
                 }
-            } else if selectedIndexes.contains(selectedCardIndex) {   // select a selected card
+
+            } else if selectedIndexes.contains(selectedCardIndex) {   // select a selected card, existed 1-2 cards only
                 // unselect it
-                selectedIndexes.removeFirst(selectedCardIndex)
+                if let toBeUnselected = selectedIndexes.firstIndex(of: selectedCardIndex) {
+                    selectedIndexes.remove(at: toBeUnselected)
+                }
+
+            } else {
+                selectedIndexes.append(selectedCardIndex)
             }
+
         }
     }
 
@@ -130,6 +164,7 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
         let symbol: SymbolContent
         let shading: ShadingContent
         var isMatched: Bool = false
+        var isUnMatched: Bool = false  // 3 cards selected, but not matched
         var isSelected: Bool = false
     }
 }
@@ -143,7 +178,7 @@ extension Array where Element: Equatable {
 
     func firstThreeUnique() -> Bool {
         if self.count >= 3 {
-            return self[0] == self[1] && self[1] == self[2]
+            return self[0] != self[1] && self[1] != self[2] && self[0] != self[2]
         } else {
             return false
         }
