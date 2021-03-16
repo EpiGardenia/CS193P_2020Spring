@@ -29,7 +29,7 @@ class SetGameViewModel: ObservableObject {
         model.getInitialCardsOnTable()
     }
     
-    enum SetColor: String, CaseIterable {
+    enum SetColor: CaseIterable, Equatable {
         case green, red, blue
         var color: Color {
             switch self {
@@ -43,7 +43,7 @@ class SetGameViewModel: ObservableObject {
         }
     }
     
-    enum SetNumber: String, CaseIterable {
+    enum SetNumber: CaseIterable, Equatable{
         case one, two, three
         var number: Int {
             switch self {
@@ -57,11 +57,11 @@ class SetGameViewModel: ObservableObject {
         }
     }
     
-    enum SetSymbol: CaseIterable {
+    enum SetSymbol: CaseIterable, Equatable {
         case diamond, squiggles, oval
     }
     
-    enum SetShading: String, CaseIterable {
+    enum SetShading: CaseIterable, Equatable {
         case solid, striped, open
         
         var opacity: Double {
