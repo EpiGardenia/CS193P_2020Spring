@@ -22,12 +22,14 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
     }
     private(set) var selectedIndexes: [Int] {
         get {
-            cardsOnTable.indices.filter{ cardsOnTable[$0].isSelected }
+            cardsOnTable.indices.filter { cardsOnTable[$0].isSelected }
         }
         set {
             //print("set selectedIndexes = \(newValue)")
-            _ = cardsOnTable.indices.map{cardsOnTable[$0].isSelected = false;
-                cardsOnTable[$0].isMatched = false; cardsOnTable[$0].isUnMatched = false }
+            _ = cardsOnTable.indices.map {
+                cardsOnTable[$0].isSelected = false;
+                cardsOnTable[$0].isMatched = false;
+                cardsOnTable[$0].isUnMatched = false }
             _ = newValue.map{cardsOnTable[$0].isSelected = true }
 
             if newValue.count == 3 {
@@ -37,12 +39,10 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
                 } else {
                     _ = newValue.map{cardsOnTable[$0].isUnMatched = true}
                     score -= 1
-            }
+                }
             }
         }
     }
-
-    private var cardsArchive = [Card]()  // TODO: maybe can be removed?
 
     static private func createNewGameDeck() -> [Card] {
         var id = 0
@@ -50,13 +50,12 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
         for color in ColorContent.allCases {
             for number in NumberContent.allCases {
                 for symbol in SymbolContent.allCases {
-       //             for shading in ShadingContent.allCases {
-                newDeck.append(Card(id: id, color: color, number: number, symbol: symbol, shading: ShadingContent.allCases.first!))
-                        //newDeck.append(Card(id: id, color: color, number: number, symbol: symbol, shading: shading))
+                    for shading in ShadingContent.allCases {
+                        newDeck.append(Card(id: id, color: color, number: number, symbol: symbol, shading: shading))
                         id += 1
                     }
                 }
-//            }
+            }
         }
 
         return Array(newDeck.shuffled())
@@ -84,13 +83,11 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
     init() {
         self.cardsInDeck = Self.createNewGameDeck()
         self.cardsOnTable = [Card]()
-      //  self.cardsMatched = [Card]()
     }
 
     mutating func resetGame() {
         self.cardsInDeck = Self.createNewGameDeck()
         self.cardsOnTable = [Card]()
-    //    self.cardsMatched = [Card]()
     }
 
     mutating func dealThreeCards() {
@@ -113,12 +110,11 @@ struct SetGame<ColorContent: Equatable, NumberContent: Equatable, SymbolContent:
     }
 
     private mutating func replaceNewCards() {
-            for _ in 0..<3 {
-                // refill new card in matched position
-                let newCard =  cardsInDeck.removeFirst()
-                cardsOnTable[selectedIndexes.first!] = newCard
-                cardsArchive.append(newCard)
-            }
+        for _ in 0..<3 {
+            // refill new card in matched position
+            let newCard =  cardsInDeck.removeFirst()
+            cardsOnTable[selectedIndexes.first!] = newCard
+        }
     }
 
 

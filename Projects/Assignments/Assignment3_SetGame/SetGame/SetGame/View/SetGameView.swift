@@ -24,31 +24,57 @@ struct SetGameView: View {
                 CardView(of: card)
                     .padding(3)
                     .onTapGesture {
-                        viewModel.select(card: card)
+                        withAnimation(.linear(duration: 1)) {
+                            viewModel.select(card: card)
+                        }
                     }
+                    .transition(.offset(outOfScreenLocation))
             }
             .foregroundColor(.orange)
             .onAppear {
+                withAnimation(.easeInOut(duration: 2)){
                 viewModel.getInitialCardsOnTable()
+                }
             }
 
             HStack {
-                Button(action:{viewModel.startNewGame()}) {
+                Button(action:{
+                        withAnimation(.easeIn(duration: 2)) {
+                            viewModel.startNewGame()}}) {
                     roundFontRectButton(text: "New Game", size: size)
                 }
                 ZStack{
-                RoundedRectangle(cornerRadius: 5)
-                    .foregroundColor(.orange)
-                    .frame(width: size.width*0.3)
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.orange)
+                        .frame(width: size.width*0.3)
                     Text("Score: \(viewModel.score)")
                 }
-                Button(action: { viewModel.dealThreeCards() }) {
+                Button(action: {
+                        withAnimation(.easeIn(duration: 1)) {
+                            viewModel.dealThreeCards() } }) {
                     roundFontRectButton(text: "Deal Three Cards", size: size)
                 }.disabled(viewModel.cardsInDeck.count == 0)
             }
             .frame(height: size.height*0.2)
             .padding(.bottom)
         }
+        //  .transition(.scale)
+    }
+
+
+    // MARK: - Drawing Constants
+    private var outOfScreenLocation: CGSize {
+        let width = CGFloat.random(inRanges: [-1000 ..< -500, 500..<1000])
+        let height = CGFloat.random(inRanges: [-1000 ..< -500, 500..<1000])
+        return CGSize(width: width, height: height)
+    }
+}
+
+
+extension CGFloat {
+    static func random(inRanges: [Range<Self>]) -> CGFloat {
+        let randomNumbers = inRanges.map{ CGFloat.random(in: $0)}
+        return randomNumbers.randomElement()!
     }
 }
 
@@ -61,6 +87,8 @@ func roundFontRectButton(text: String, size: CGSize) -> some View {
         .frame(width: size.width*0.3)
         .font(.system(size: min(size.width, size.height)*0.33*0.15))
 }
+
+
 
 
 struct SetGameView_Previews: PreviewProvider {

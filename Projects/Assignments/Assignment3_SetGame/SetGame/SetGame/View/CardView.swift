@@ -21,9 +21,10 @@ struct CardView: View {
     }
 
     private func body(size: CGSize) -> some View {
+        Group {
         ZStack{
             RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(borderColor)
+                .fill(indicatedColor)
                 .opacity(backGroundOpacity)
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(lineWidth: strokeWidth)
@@ -35,12 +36,14 @@ struct CardView: View {
             }
             .foregroundColor(.orange)
             .padding(padInsideCard)
+            // animation here has no effect
         }
         .aspectRatio(2/3, contentMode: .fit)
+        }      
     }
 
 
-    private var borderColor: Color {
+    private var indicatedColor: Color {
         if card.isMatched {
             return  Color.green
         } else if card.isUnMatched {

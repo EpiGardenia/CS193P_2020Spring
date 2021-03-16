@@ -39,7 +39,7 @@ class SetGameViewModel: ObservableObject {
         var color: Color {
             switch self {
                 case .gray:
-                    return Color.gray
+                    return Color.black
                 case .blue:
                     return Color.blue
                 case .red:
@@ -110,7 +110,6 @@ class SetGameViewModel: ObservableObject {
 
     func select(card: setGame.Card) {
         model.select(card)
-        print("isMatched:\(card.isMatched), isUnMatched: \(card.isUnMatched), isSelected:\(card.isSelected)")
     }
 
     static var cardExample: setGame.Card {
