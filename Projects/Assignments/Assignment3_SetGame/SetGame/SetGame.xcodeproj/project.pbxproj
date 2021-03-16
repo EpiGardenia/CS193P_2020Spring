@@ -16,9 +16,9 @@
 		1A3BC40B25FE6A8600F2BCD9 /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC40A25FE6A8600F2BCD9 /* SetGameViewModel.swift */; };
 		1A3BC40E25FE78EE00F2BCD9 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC40D25FE78EE00F2BCD9 /* Grid.swift */; };
 		1A3BC41125FE791500F2BCD9 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC41025FE791500F2BCD9 /* GridLayout.swift */; };
-		1A3BC41925FE79E200F2BCD9 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC41825FE79E200F2BCD9 /* Array+Identifiable.swift */; };
 		1A3BC41C25FF60BE00F2BCD9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC41B25FF60BE00F2BCD9 /* CardView.swift */; };
 		1A3BC41F25FFA52F00F2BCD9 /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC41E25FFA52F00F2BCD9 /* SymbolView.swift */; };
+		1A7E1116260102AA002B0A5C /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E1115260102AA002B0A5C /* Array+Identifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		1A3BC40A25FE6A8600F2BCD9 /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		1A3BC40D25FE78EE00F2BCD9 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		1A3BC41025FE791500F2BCD9 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
-		1A3BC41825FE79E200F2BCD9 /* Array+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Identifiable.swift"; path = "../../../../CS193p_2020_Assignment2/Memorize/Memorize/Extensions/Array+Identifiable.swift"; sourceTree = "<group>"; };
 		1A3BC41B25FF60BE00F2BCD9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1A3BC41E25FFA52F00F2BCD9 /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
+		1A7E1115260102AA002B0A5C /* Array+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +68,11 @@
 		1A3BC3EF25FBCBD600F2BCD9 /* SetGame */ = {
 			isa = PBXGroup;
 			children = (
-				1A3BC41025FE791500F2BCD9 /* GridLayout.swift */,
 				1A3BC40225FE6A4100F2BCD9 /* Model */,
 				1A3BC40025FE6A3500F2BCD9 /* View */,
 				1A3BC40125FE6A3B00F2BCD9 /* ViewModel */,
-				1A3BC41725FE79C100F2BCD9 /* Extension */,
+				1A7E111126010217002B0A5C /* Extension */,
+				1A3BC41025FE791500F2BCD9 /* GridLayout.swift */,
 				1A3BC3F225FBCBD600F2BCD9 /* ContentView.swift */,
 				1A3BC3F025FBCBD600F2BCD9 /* SetGameApp.swift */,
 				1A3BC3F425FBCBD800F2BCD9 /* Assets.xcassets */,
@@ -117,10 +117,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1A3BC41725FE79C100F2BCD9 /* Extension */ = {
+		1A7E111126010217002B0A5C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1A3BC41825FE79E200F2BCD9 /* Array+Identifiable.swift */,
+				1A7E1115260102AA002B0A5C /* Array+Identifiable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 				1A3BC3F125FBCBD600F2BCD9 /* SetGameApp.swift in Sources */,
 				1A3BC40B25FE6A8600F2BCD9 /* SetGameViewModel.swift in Sources */,
 				1A3BC41F25FFA52F00F2BCD9 /* SymbolView.swift in Sources */,
-				1A3BC41925FE79E200F2BCD9 /* Array+Identifiable.swift in Sources */,
+				1A7E1116260102AA002B0A5C /* Array+Identifiable.swift in Sources */,
 				1A3BC41125FE791500F2BCD9 /* GridLayout.swift in Sources */,
 				1A3BC40E25FE78EE00F2BCD9 /* Grid.swift in Sources */,
 			);
