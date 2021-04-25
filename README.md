@@ -21,8 +21,11 @@ Lecture code with my change (adapt to Xcode12, or adding notes)
 * [Lecture 4: Grid enum Optionals](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture4)
 * [Lecture 5: ViewBuilder Shape ViewModifier](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture5)
 * [Lecture 6: Animation](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture6)
-<br><br>
+* [Lecture 7: MultiThreading](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture7)
+* [Lecture 8: Gesture JSON](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture8)
+* [Lecture 9: Data Flow](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture9)
 
+<br><br>
 ## CS193p_2020Sprint_Original_Materials.zip
 zip of Original Course Materials, for quick download.
 <br><br>

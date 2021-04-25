@@ -19,7 +19,7 @@ Thus Alt 1. is enough
 listen to @published parameter and do handling
 
 
-### dataTaskPublisher
+### `dataTaskPublisher`
 
 Use this to replace DispatchQueue.global to handle data and then passing..etc
 `
@@ -41,8 +41,8 @@ Assure image in process is the latest one by cancel previous task before process
 
 ## Add Features
 
-### hourglass spinning when the background is loading
-### Add Emoji Palette
+* hourglass spinning when the background is loading
+* Add Emoji Palette
 
 ## Problems Fixed
 
