@@ -42,15 +42,9 @@ Assure image in process is the latest one by cancel previous task before process
 ## Add Features
 
 ### hourglass spinning when the background is loading
-
-
-
-
-
-
+### Add Emoji Palette
 
 ## Problems Fixed
-
 
 ### Problem
 Whenever changing background image, while loading, user see only whitebackground with previous emojis

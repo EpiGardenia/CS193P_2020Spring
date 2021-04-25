@@ -9,56 +9,60 @@ import SwiftUI
 
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
+    @State private var chosenPalette: String = ""
 
     var body: some View {
-        ScrollView(.horizontal) {
+        VStack {
             HStack {
-                ForEach(EmojiArtDocument.palette.map { String($0) }, id: \.self) { emoji in
-                    Text(emoji)
-                        .font(Font.system(size: defaultEmojiSize))
-                        .onDrag { NSItemProvider(object: emoji as NSString)}
-                }
-            }
-        }
-        .padding(.horizontal)
-
-        GeometryReader { geometry in
-            ZStack {
-                Color.white.overlay(
-                    OptionalImage(uiImage: self.document.backgroundImage)
-                        .scaleEffect(self.zoomScale)
-                )
-                .gesture(self.doubleTapToZoom(in: geometry.size))
-
-                if self.isLoading {
-                    Image(systemName: "hourglass").imageScale(.large).spinning()
-                } else {
-                    ForEach(self.document.emojis) { emoji in
-                        Text(emoji.text)
-                            .font(animatableWithSize: emoji.fontSize * steadyStateZoomScale)
-                            .position(self.position(for: emoji, in: geometry.size))
+                PaletteChooser(document: document, chosenPalette: $chosenPalette)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(chosenPalette.map { String($0) }, id: \.self) { emoji in
+                            Text(emoji)
+                                .font(Font.system(size: defaultEmojiSize))
+                                .onDrag { NSItemProvider(object: emoji as NSString)}
+                        }
                     }
                 }
+                .onAppear { self.chosenPalette = self.document.defaultPalette }
             }
-            .clipped()
-            .gesture(zoomGesture())
-            .edgesIgnoringSafeArea([.horizontal, .bottom])
-            .onReceive(self.document.$backgroundImage) { image in
-                self.zoomToFit(image, in: geometry.size)
+
+            GeometryReader { geometry in
+                ZStack {
+                    Color.white.overlay(
+                        OptionalImage(uiImage: self.document.backgroundImage)
+                            .scaleEffect(self.zoomScale)
+                    )
+                    .gesture(self.doubleTapToZoom(in: geometry.size))
+                    
+                    if self.isLoading {
+                        Image(systemName: "hourglass").imageScale(.large).spinning()
+                    } else {
+                        ForEach(self.document.emojis) { emoji in
+                            Text(emoji.text)
+                                .font(animatableWithSize: emoji.fontSize * steadyStateZoomScale)
+                                .position(self.position(for: emoji, in: geometry.size))
+                        }
+                    }
+                }
+                .clipped()
+                .gesture(zoomGesture())
+                .edgesIgnoringSafeArea([.horizontal, .bottom])
+                .onReceive(self.document.$backgroundImage) { image in
+                    self.zoomToFit(image, in: geometry.size)
+                }
+                .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
+                    //print("location: (\(location.x), \(location.y))")
+                    var location = geometry.convert(location, from: .global)
+                    // print("location(global): (\(location.x), \(location.y))")
+                    location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2)
+                    location = CGPoint(x: location.x / self.steadyStateZoomScale, y: location.y / self.steadyStateZoomScale)
+                    //  print("location(convert): (\(location.x), \(location.y))")
+                    return self.drop(providers: providers, at: location)
+                }
             }
-            .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
-                //print("location: (\(location.x), \(location.y))")
-                var location = geometry.convert(location, from: .global)
-                // print("location(global): (\(location.x), \(location.y))")
-                location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2)
-                location = CGPoint(x: location.x / self.steadyStateZoomScale, y: location.y / self.steadyStateZoomScale)
-                //  print("location(convert): (\(location.x), \(location.y))")
-                return self.drop(providers: providers, at: location)
-            }
+            
         }
-
-
-
     }
 
     var isLoading: Bool {
