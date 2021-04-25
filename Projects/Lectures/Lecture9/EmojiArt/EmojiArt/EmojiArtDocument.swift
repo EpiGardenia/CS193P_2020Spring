@@ -6,27 +6,26 @@
 //
 
 import SwiftUI
+import Combine
 
 //VM
 class EmojiArtDocument: ObservableObject {
     static let palette: String = "🐹🐰🐱🐣🦊🐮🐤🦉🦄🐙🐝"
 
-    //@Published => workaaround for property observer problem with property wrapper
-    private var emojiArt: EmojiArt = EmojiArt() {  //Model
-        willSet {
-            objectWillChange.send()
-        }
-        didSet {
-            UserDefaults.standard.set(emojiArt.json, forKey: EmojiArtDocument.untitled)
-            print("json = \(emojiArt.json?.utf8 ?? "nil")")
-        }
-
-    }
+    @Published private var emojiArt: EmojiArt
 
     private static let untitled = "EmojiArtDocument.Untitled"
 
+    // this will be alive as long as this viewModel alive
+    private var autosaveCancellable: AnyCancellable?
+
     init() {
         emojiArt = EmojiArt(json: UserDefaults.standard.data(forKey: EmojiArtDocument.untitled)) ?? EmojiArt()
+        // start to listen to emojiArt change and auto save to userdefault
+        autosaveCancellable = $emojiArt.sink { emojiArt in
+            print("json = \(emojiArt.json?.utf8 ?? "nil")")
+            UserDefaults.standard.set(emojiArt.json, forKey: EmojiArtDocument.untitled)
+        }
         fetchBackgroundImageData()
     }
 
@@ -63,24 +62,24 @@ class EmojiArtDocument: ObservableObject {
     }
 
 
-
+    private var fetchImageCancellable: AnyCancellable?
     private func fetchBackgroundImageData() {
         backgroundImage = nil
         if let url = self.emojiArt.backgroundURL {
-            DispatchQueue.global(qos: .userInitiated).async {
-                if let imageData = try? Data(contentsOf: url) {  // <--- Data(..) can take few seconds to few minutes
-                    DispatchQueue.main.async {
-                        if url == self.emojiArt.backgroundURL {  // **** check it's the image the user still want
-                            self.backgroundImage = UIImage(data: imageData)
-                        }
-                    }
-                }
-            }
+            // Cancel the outdated value, to assure the image is the last one user chosen
+            fetchImageCancellable?.cancel()
+            // publish content of url
+            fetchImageCancellable = URLSession.shared.dataTaskPublisher(for: url)
+                .map { data, urlResponse in UIImage(data: data) }
+                .receive(on: DispatchQueue.main)
+                .replaceError(with: nil)
+                // assign only work with error type Never. If not, we need replaceError
+                // \EmojiArtDocument.backgroundImage on self = \.backgroundImage
+                .assign(to: \.backgroundImage, on: self)
         }
     }
 
 }
-
 
 
 extension EmojiArt.Emoji {

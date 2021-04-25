@@ -43,6 +43,9 @@ struct EmojiArtDocumentView: View {
             .clipped()
             .gesture(zoomGesture())
             .edgesIgnoringSafeArea([.horizontal, .bottom])
+            .onReceive(self.document.$backgroundImage) { image in
+                self.zoomToFit(image, in: geometry.size)
+            }
             .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
                 //print("location: (\(location.x), \(location.y))")
                 var location = geometry.convert(location, from: .global)
