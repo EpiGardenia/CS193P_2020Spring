@@ -71,6 +71,26 @@ class EmojiArtDocument: ObservableObject
             }
         }
     }
+
+
+    /* Required Task 2-5 */
+    @Published var selectedEmojis: [EmojiArt.Emoji] = []
+    func clearSelectedEmojis() {
+        selectedEmojis.removeAll()
+    }
+
+    func tapOn(emoji: EmojiArt.Emoji) {
+        if let index = selectedEmojis.firstIndex(of: emoji) {
+            selectedEmojis.remove(at: index)
+        } else {
+            selectedEmojis.append(emoji)
+        }
+    }
+
+    func borderColor(_ emoji: EmojiArt.Emoji) -> Color {
+        selectedEmojis.contains(emoji) ? Color.green : Color.clear
+    }
+
 }
 
 extension EmojiArt.Emoji {

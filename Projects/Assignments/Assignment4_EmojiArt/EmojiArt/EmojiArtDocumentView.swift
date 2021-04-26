@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
-    
+
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
@@ -29,12 +29,21 @@ struct EmojiArtDocumentView: View {
                         OptionalImage(uiImage: self.document.backgroundImage)
                             .scaleEffect(self.zoomScale)
                             .offset(self.panOffset)
+
                     )
-                        .gesture(self.doubleTapToZoom(in: geometry.size))
+                    .gesture(self.doubleTapToZoom(in: geometry.size))
+                    .onTapGesture { document.clearSelectedEmojis() } // Required Task #5
+
                     ForEach(self.document.emojis) { emoji in
-                        Text(emoji.text)
-                            .font(animatableWithSize: emoji.fontSize * self.zoomScale)
-                            .position(self.position(for: emoji, in: geometry.size))
+                        let size = emoji.fontSize * self.zoomScale
+                        ZStack {
+                            Text(emoji.text)
+                                .font(animatableWithSize: size )
+                                .padding()
+                                .border(document.borderColor(emoji), width: 5) // Required Task #2-5
+                                .position(self.position(for: emoji, in: geometry.size))
+                                .onTapGesture { document.tapOn(emoji: emoji) } // Required Task #2-4
+                        }
                     }
                 }
                 .clipped()
