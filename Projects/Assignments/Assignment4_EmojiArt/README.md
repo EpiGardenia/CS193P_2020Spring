@@ -42,7 +42,7 @@ Add the value into emoji position
 9. If there is no selection at the time of  a pinch, the entire document should be scaled. 
 
 ### Solution
-
+Add new updating/ended to listen in zoomGesture, depending on if selectedEmoji array is empty
 
 
 ## Required Task 10 -- Delete

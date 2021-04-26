@@ -35,10 +35,10 @@ struct EmojiArtDocumentView: View {
                     .onTapGesture { document.clearSelectedEmojis() } // Required Task #5
 
                     ForEach(self.document.emojis) { emoji in
-                        let size = emoji.fontSize * self.zoomScale
+                        let size = emoji.fontSize * self.emojiZoomScale /* Required Task #8 */
                         ZStack {
                             Text(emoji.text)
-                                .font(animatableWithSize: size )
+                                .font(animatableWithSize: size)
                                 .padding()
                                 .border(document.borderColor(emoji), width: 5) // Required Task #2-5
                                 .position(self.position(for: emoji, in: geometry.size))
@@ -50,6 +50,7 @@ struct EmojiArtDocumentView: View {
                 .clipped()
                 .gesture(self.panGesture())
                 .gesture(self.zoomGesture())
+            //    .gesture(document.selectedEmojis.isEmpty ? self.zoomGesture().ex: self.emojiZoomGesture())
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
                 .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
                     // SwiftUI bug (as of 13.4)? the location is supposed to be in our coordinate system
@@ -83,6 +84,10 @@ struct EmojiArtDocumentView: View {
 
 
 
+    /* Required Task 8 */
+    @State private var steadyStateEmojiZoomScale: CGFloat = 1.0
+    @GestureState private var gestureEmojiZoomScale: CGFloat = 1.0
+
     @State private var steadyStateZoomScale: CGFloat = 1.0
     @GestureState private var gestureZoomScale: CGFloat = 1.0
 
@@ -90,14 +95,33 @@ struct EmojiArtDocumentView: View {
     private var zoomScale: CGFloat {
         steadyStateZoomScale * gestureZoomScale
     }
+
+    private var emojiZoomScale: CGFloat {
+        steadyStateEmojiZoomScale * gestureEmojiZoomScale
+    }
     
     private func zoomGesture() -> some Gesture {
         MagnificationGesture()
             .updating($gestureZoomScale) { latestGestureScale, gestureZoomScale, transaction in
-                gestureZoomScale = latestGestureScale
+                if document.selectedEmojis.isEmpty {
+                    gestureZoomScale = latestGestureScale
+                }
             }
             .onEnded { finalGestureScale in
-                self.steadyStateZoomScale *= finalGestureScale
+                if document.selectedEmojis.isEmpty {
+                    self.steadyStateZoomScale *= finalGestureScale
+                }
+            }
+            /* Required Task 8 */
+            .updating($gestureEmojiZoomScale) { latestGestureScale, gestureEmojiZoomScale, transaction in
+                if !document.selectedEmojis.isEmpty {
+                    gestureEmojiZoomScale = latestGestureScale
+                }
+            }
+            .onEnded { finalGestureScale in
+                if !document.selectedEmojis.isEmpty {
+                    self.steadyStateEmojiZoomScale *= finalGestureScale
+                }
             }
     }
     
