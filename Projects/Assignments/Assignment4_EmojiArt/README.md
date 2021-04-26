@@ -32,7 +32,7 @@ Called in View ( EmojiArtDocumentView.swift )
 ### Solution
 Add `dragGesture` 
 Add the value into emoji position
-
+** Note: This might not be best practice since i am using if/else.  If you have idea how to be more reactive, please let me know :)
 
 ## Required Task 8-9 -- Pinching
 
@@ -51,3 +51,4 @@ Add new updating/ended to listen in zoomGesture, depending on if selectedEmoji a
 10.Make it possible to delete emojis from the EmojiArt document.  This Required Task is intentionally not saying what user-interface actions should cause this.  Be creative and try to find a way to delete the emojis that feels comfortable and intuitive. 
 
 ### Solution
+Add `contextMenu` on emoji

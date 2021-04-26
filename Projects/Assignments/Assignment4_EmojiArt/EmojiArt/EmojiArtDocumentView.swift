@@ -11,6 +11,7 @@ import SwiftUI
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
 
+    @State private var showMenuEmoji : EmojiArt.Emoji?
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
@@ -36,21 +37,30 @@ struct EmojiArtDocumentView: View {
 
                     ForEach(self.document.emojis) { emoji in
                         let size = emoji.fontSize * self.emojiZoomScale /* Required Task #8 */
-                        ZStack {
-                            Text(emoji.text)
-                                .font(animatableWithSize: size)
-                                .padding()
-                                .border(document.borderColor(emoji), width: 5) // Required Task #2-5
-                                .position(self.position(for: emoji, in: geometry.size))
-                                .onTapGesture { document.tapOn(emoji: emoji) } // Required Task #2-4
-                                .gesture(self.dragGesture()) // Required Task #6
-                        }
+                        Text(emoji.text)
+                            .font(animatableWithSize: size)
+                            .padding()
+                            .border(document.borderColor(emoji), width: 5) // Required Task #2-5
+                            .contextMenu {  /* Required Task #10 */
+                                Button(action: { document.deleteEmoji(emoji)}) {
+                                    if #available(iOS 14.0, *) {
+                                        Label("Delete", systemImage: "trash")
+                                    } else {
+                                        Text("Delete")
+                                    }
+                                }
+                                Button("Cancel") {}
+                            }
+                            .position(self.position(for: emoji, in: geometry.size))
+                            .onTapGesture { document.tapOn(emoji: emoji) } // Required Task #2-4
+                            .gesture(self.dragGesture()) // Required Task #6
+
+
                     }
                 }
                 .clipped()
                 .gesture(self.panGesture())
                 .gesture(self.zoomGesture())
-            //    .gesture(document.selectedEmojis.isEmpty ? self.zoomGesture().ex: self.emojiZoomGesture())
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
                 .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
                     // SwiftUI bug (as of 13.4)? the location is supposed to be in our coordinate system
@@ -167,6 +177,7 @@ struct EmojiArtDocumentView: View {
         location = CGPoint(x: location.x + size.width/2, y: location.y + size.height/2)
         location = CGPoint(x: location.x + panOffset.width, y: location.y + panOffset.height)
         location = CGPoint(x: location.x + dragOffset.width, y: location.y + dragOffset.height)
+        print("position: \(location.debugDescription)")
         return location
     }
     
