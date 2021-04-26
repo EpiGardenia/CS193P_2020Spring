@@ -43,6 +43,7 @@ struct EmojiArtDocumentView: View {
                                 .border(document.borderColor(emoji), width: 5) // Required Task #2-5
                                 .position(self.position(for: emoji, in: geometry.size))
                                 .onTapGesture { document.tapOn(emoji: emoji) } // Required Task #2-4
+                                .gesture(self.dragGesture()) // Required Task #6
                         }
                     }
                 }
@@ -62,10 +63,30 @@ struct EmojiArtDocumentView: View {
             }
         }
     }
-    
+
+    /* Required Task #6 7 */
+    @State private var steadyStateDragOffset: CGSize = .zero
+    @GestureState private var gestureDragOffset: CGSize = .zero
+    private var dragOffset: CGSize {
+        (steadyStateDragOffset + gestureDragOffset) * zoomScale
+    }
+
+    private func dragGesture() -> some Gesture {
+        DragGesture()
+            .updating($gestureDragOffset) { latestDragGestureValue, gestureDragOffset, transaction in
+                gestureDragOffset = latestDragGestureValue.translation / self.zoomScale
+            }
+            .onEnded { finalDrageDistance in
+                self.steadyStateDragOffset = self.steadyStateDragOffset + (finalDrageDistance.translation / self.zoomScale)
+            }
+    }
+
+
+
     @State private var steadyStateZoomScale: CGFloat = 1.0
     @GestureState private var gestureZoomScale: CGFloat = 1.0
-    
+
+
     private var zoomScale: CGFloat {
         steadyStateZoomScale * gestureZoomScale
     }
@@ -121,6 +142,7 @@ struct EmojiArtDocumentView: View {
         location = CGPoint(x: location.x * zoomScale, y: location.y * zoomScale)
         location = CGPoint(x: location.x + size.width/2, y: location.y + size.height/2)
         location = CGPoint(x: location.x + panOffset.width, y: location.y + panOffset.height)
+        location = CGPoint(x: location.x + dragOffset.width, y: location.y + dragOffset.height)
         return location
     }
     
