@@ -13,6 +13,7 @@ Hope my codes can also inspire people in this challenging journey.
  * [Assignment 2: More Memorize](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment2)
  * [Assignment 3: Set Game](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/Assignment3_SetGame)
  * [Assignment 4: Emoji Art](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/Assignment4_EmojiArt)
+ * [Assignment 5: JSON Memorize Theme](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/Assignemnt5_JSON_Memorize_Theme)
 <br><br>
 
 ### Lectures
