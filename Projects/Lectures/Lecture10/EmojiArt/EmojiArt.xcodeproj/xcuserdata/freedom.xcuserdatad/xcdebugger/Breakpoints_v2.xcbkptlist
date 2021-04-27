@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4AB5C357-CDC5-4D99-8DB0-0D8178EFAADF"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6CFDC58-2E14-4F1A-8BE4-EE5CFF1E55BA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EmojiArt/EmojiArtDocumentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B35A74E5-95C5-431A-971D-ACCAF935D9F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../Original_Course_Materials/EmojiArt/Shared/Utility Views and Extensions/EmojiArtExtensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "loadObjects(ofType:firstOnly:using:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B35A74E5-95C5-431A-971D-ACCAF935D9F9 - 4a1ef1630f92b9c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in EmojiArt):Swift.Array&lt;A where A == __C.NSItemProvider&gt;.loadObjects&lt;A where A1: Swift._ObjectiveCBridgeable, A1._ObjectiveCType: __C.NSItemProviderReading&gt;(ofType: A1.Type, firstOnly: Swift.Bool, using: (A1) -&gt; ()) -&gt; Swift.Bool"
+                  moduleName = "EmojiArt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/freedom/Documents/xcodeProjects/SwiftUI/CS193p_2020Spring/Original_Course_Materials/EmojiArt/Shared/Utility%20Views%20and%20Extensions/EmojiArtExtensions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "B35A74E5-95C5-431A-971D-ACCAF935D9F9 - 86419455623d3a20"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSItemProvider) -&gt; Swift.Bool in (extension in EmojiArt):Swift.Array&lt;A where A == __C.NSItemProvider&gt;.loadObjects&lt;A where A1: Swift._ObjectiveCBridgeable, A1._ObjectiveCType: __C.NSItemProviderReading&gt;(ofType: A1.Type, firstOnly: Swift.Bool, using: (A1) -&gt; ()) -&gt; Swift.Bool"
+                  moduleName = "EmojiArt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/freedom/Documents/xcodeProjects/SwiftUI/CS193p_2020Spring/Original_Course_Materials/EmojiArt/Shared/Utility%20Views%20and%20Extensions/EmojiArtExtensions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "42">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
