@@ -40,4 +40,4 @@ I personally prefer to use use colorName: String and store string-Color dictiona
 
 
 ## Result
-<img src="Demo/Assignment5.png" width="600" height="300">
+<img src="Demo/Assignment5.png" >
