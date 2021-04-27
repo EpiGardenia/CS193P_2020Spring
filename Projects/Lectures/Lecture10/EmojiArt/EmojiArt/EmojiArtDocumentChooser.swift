@@ -28,14 +28,18 @@ struct EmojiArtDocumentChooser: View {
                     }
                 }
             }
-            .navigationBarTitle(store.name)
-            .navigationBarItems(leading: Button(action: {
+            .navigationTitle(store.name)
+            .navigationBarItems(leading: Text("Hi"))
+            .navigationBarItems(
+                leading: Button(action: {
                 store.addDocument()
             }, label: {
                 Image(systemName: "plus").imageScale(.large)
-            }), trailing: EditButton()
+            })
+                , trailing: EditButton()
+                    .environment(\.editMode, $editMode)
             )
-            .environment(\.editMode, $editMode)
+
         }
     }
 }

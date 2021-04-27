@@ -13,7 +13,8 @@ struct EmojiArtApp: App {
 
     var body: some Scene {
         WindowGroup {
-            EmojiArtDocumentChooser().environmentObject(store)
+            EmojiArtDocumentChooser()
+                .environmentObject(store)
           // EmojiArtDocumentView(document: EmojiArtDocument())
         }
     }
