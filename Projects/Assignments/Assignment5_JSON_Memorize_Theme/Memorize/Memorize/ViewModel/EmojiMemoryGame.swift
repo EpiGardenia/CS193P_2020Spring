@@ -7,13 +7,11 @@
 
 import SwiftUI
 class EmojiMemoryGame: ObservableObject {
-    // @Published: everytime model change, it is going to objectWillChange.send()
     @Published var model: MemoryGame<String>
     var theme: Theme
 
-    static func createMemoryGame(theme: Theme) -> MemoryGame<String> { // Required Task #5
-        let numbers = theme.numberOfPairsOfCards ?? Int.random(in: 2...theme.emojis.count)
-        return MemoryGame<String>(numberOfPairsOfCards: numbers) { pairIndex in
+    static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
+        return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
             return theme.emojis[pairIndex]
         }
     }
@@ -50,18 +48,20 @@ class EmojiMemoryGame: ObservableObject {
 
 
     // MARK: - Theme Constants
-    // Required Tasks #3 #4
     struct Theme {
         var name: String
         var emojis: [String]
         var color: Color
-        var numberOfPairsOfCards: Int?
+        /* Required Task #1 */
+        var numberOfPairsOfCards: Int {
+            emojis.count
+        }
 
     static let themes: [Theme] = {
-        [Theme(name: "Halloween", emojis: ["👻", "🎃", "🕷", "🍬", "🧙🏻", "🌕"], color: Color.orange, numberOfPairsOfCards: 6),
-         Theme(name: "Animal", emojis: ["🐍", "🐷", "🐰", "🐑", "🐙", "🦑"], color: Color.purple),
+        [Theme(name: "Halloween", emojis: ["👻", "🎃", "🕷", "🍬", "🧙🏻", "🌕"], color: Color.orange),
+         Theme(name: "Animal", emojis: ["🐍", "🐷", "🐰", "🐑", "🐙", "🦑", "🐥", "🐯"], color: Color.purple),
          Theme(name: "Sports", emojis: ["🏸", "🏀", "🏓", "🎱", "⚽️"], color: Color.gray),
-         Theme(name: "Food", emojis: ["🍣", "🍜", "🍔", "🥙", "🌮", "🥘", "🥗"], color: Color.yellow),
+         Theme(name: "Food", emojis: ["🍣", "🍜", "🍔", "🥙", "🌮", "🥘", "🥗", "🥐", "🍕"], color: Color.yellow),
          Theme(name: "Weather", emojis: ["☃️", "☀️", "☁️", "☔️", "🌦", "🌬"], color: Color.blue),
          Theme(name: "Fruit", emojis: ["🍒", "🍊", "🍍", "🍉", "🍌", "🍓"], color: Color.pink),
         ]
