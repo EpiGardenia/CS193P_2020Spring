@@ -1,54 +1,24 @@
-# Lecture 9: Data Flow
-
-
-## @Published
-
-### `sink()`
-@Published can not use `didset`, but we can use `$xxx.sink()`to subscribe to the publisher xxx and handling.
-
-There are two sink func:
-1. `$emojiArt.sink(receiveValue: ((EmojiArt) -> Void)` 
-2. `$emojiArt.sink(receiveCompletion: ((Subscribers.Completion<Never)->Void),
-                        receiveValue: ((EmojiArt) -> Void))`
-
-For emojiArt publisher, it will always publish and never stop, failure type: Never. They can never fail and complete.
-Thus Alt 1. is enough
-
-
-### `onReceive($...)`
-listen to @published parameter and do handling
-
-
-### `dataTaskPublisher`
-
-Use this to replace DispatchQueue.global to handle data and then passing..etc
-`
-fetchImageCancellable = URLSession.shared.dataTaskPublisher(for: url)
-                                                .map { data, urlResponse in UIImage(data: data) }
-                                                .receive(on: DispatchQueue.main)
-                                                .replaceError(with: nil)
-                                                .assign(to: \.backgroundImage, on: self)
-`
-
-with 
-` fetchImageCancellable?.cancel() `
-Assure image in process is the latest one by cancel previous task before process a new url
+# Lecture 10: Navigation + TextField
 
 
 
+## UI components
+
+#### .sheet, .popover
+
+#### TextField
+`onEditingChanged` can be used to update the persistent value while TextField is updating
 
 
+#### Grid enhancement
+More about Constraints and Gains via Grid enhancement Dismissing modally presented Views via @Bindings Multiple MVVMs in a single application
 
-## Add Features
+#### Hashable and Equaltable
 
-* hourglass spinning when the background is loading
-* Add Emoji Palette
-
-## Problems Fixed
-
-### Problem
-Whenever changing background image, while loading, user see only whitebackground with previous emojis
-#### Solution
-Only show emoji when not in loading state (i.e. backgroundURL exists but not backgroundImage)
-
-
+#### @Environment variable
+<span style="color:yellow">NavigationView + <span style="color:yellow">NavigationLink + <span style="color:yellow">.navigationBarTitle/Items</span>
+Alerts
+Deleting from a ForEach with <span style="color:yellow">.onDelete</span>
+<span style="color:yellow">EditButton</span>
+<span style="color:yellow">EditMode</span>
+<span style="color:yellow">.zIndex</span>

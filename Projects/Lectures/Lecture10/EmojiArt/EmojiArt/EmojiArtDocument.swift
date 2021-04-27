@@ -9,30 +9,40 @@ import SwiftUI
 import Combine
 
 //VM
-class EmojiArtDocument: ObservableObject {
-    //static let palette: String = "🐹🐰🐱🐣🦊🐮🐤🦉🦄🐙🐝"
-
+class EmojiArtDocument: ObservableObject, Hashable, Identifiable {
+    static func == (lhs: EmojiArtDocument, rhs: EmojiArtDocument) -> Bool {
+        lhs.id == rhs.id
+    }
+    let id: UUID
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    static let palette: String = "🐹🐰🐱🐣🦊🐮🐤🦉🦄🐙🐝"
     @Published private var emojiArt: EmojiArt
-
-    private static let untitled = "EmojiArtDocument.Untitled"
 
     // this will be alive as long as this viewModel alive
     private var autosaveCancellable: AnyCancellable?
 
-    init() {
-        emojiArt = EmojiArt(json: UserDefaults.standard.data(forKey: EmojiArtDocument.untitled)) ?? EmojiArt()
+    init(id: UUID? = nil) {
+        self.id = id ?? UUID()
+        let defaultKey = "EmojiArtDocument.\(self.id.uuidString)"
+        emojiArt = EmojiArt(json: UserDefaults.standard.data(forKey: defaultKey)) ?? EmojiArt()
         // start to listen to emojiArt change and auto save to userdefault
         autosaveCancellable = $emojiArt.sink { emojiArt in
             print("json = \(emojiArt.json?.utf8 ?? "nil")")
-            UserDefaults.standard.set(emojiArt.json, forKey: EmojiArtDocument.untitled)
+            UserDefaults.standard.set(emojiArt.json, forKey: defaultKey)
         }
         fetchBackgroundImageData()
     }
 
 
     @Published private(set) var backgroundImage: UIImage?
+    @Published var steadyStatePanOffset: CGSize = .zero
+    @Published var steadyStateZoomScale: CGFloat = 1.0
     
     var emojis: [EmojiArt.Emoji] { emojiArt.emojis }
+
+    
     // MARK: - Intent(s)
     func addEmoji(_ emoji: String, at location: CGPoint, size: CGFloat) {
         emojiArt.addEmoji(text: emoji, x: Int(location.x), y: Int(location.y), size: Int(size))
@@ -78,7 +88,6 @@ class EmojiArtDocument: ObservableObject {
                 .assign(to: \.backgroundImage, on: self)
         }
     }
-
 }
 
 
