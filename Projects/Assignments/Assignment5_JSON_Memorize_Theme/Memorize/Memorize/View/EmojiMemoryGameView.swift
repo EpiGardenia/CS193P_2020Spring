@@ -15,9 +15,9 @@ struct EmojiMemoryGameView: View {
         let color = viewModel.theme.color
         VStack {
             Spacer()
-            Text(viewModel.theme.name) // Required Task #7
+            Text(viewModel.theme.name)
                 .font(.title)
-            Text("\(viewModel.point)") // Required Task #9
+            Text("\(viewModel.point)")
                 .font(.headline)
             Divider()
             Grid(viewModel.cards) { card in
@@ -29,13 +29,13 @@ struct EmojiMemoryGameView: View {
             .padding()
             Divider()
             Button(action: { viewModel.start() }) {
-                Text("New Game".uppercased())  // Required Task #6
+                Text("New Game".uppercased())
                     .padding()
                     .background(Color.white)
                     .cornerRadius(10)
                     .padding()
             }
-        } .foregroundColor(color)
+        } .foregroundColor(Color(color))
     }
 }
 

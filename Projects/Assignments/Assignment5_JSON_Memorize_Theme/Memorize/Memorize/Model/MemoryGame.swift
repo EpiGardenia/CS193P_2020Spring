@@ -23,7 +23,7 @@ struct MemoryGame<CardContent> where CardContent: Hashable {
 
 
     mutating func choose(card: Card) {
-        print("card chosen: \(card)")
+       // print("card chosen: \(card)")
         //" ," is like sequential And, the condition is checked in sequence
         if let chosenIndex = cards.firstIndex(matching: card), !cards[chosenIndex].isFaceUp, !cards[chosenIndex].isMatched {
             if let potentialMatchIndex = indexOfTheOnlyAndOnlyFaceUpCard {
@@ -32,13 +32,8 @@ struct MemoryGame<CardContent> where CardContent: Hashable {
                     if let index = unmatchedSeenCardContents.firstIndex(of: card.content) {
                         unmatchedSeenCardContents.remove(at: index)
                     }
-                    point += 2  // Required Task #8 : if matched, +2
+                    point += 2
                 } else {
-                    /*
-                     Required Task #8:
-                     If chosen card has shown before and not yet matched, -1,
-                     If it's first shown and not yet matched, add into unmatchedSeenCardContents
-                    */
                     _ = [chosenIndex, potentialMatchIndex].map {
                         if unmatchedSeenCardContents.contains(cards[$0].content) {
                             point -= 1
@@ -63,7 +58,7 @@ struct MemoryGame<CardContent> where CardContent: Hashable {
             cards.append(Card(content: content, id: pairIndex*2+1))
         }
 
-        cards.shuffle() // Required Task #2
+        cards.shuffle() 
     }
 
     struct Card: Identifiable {

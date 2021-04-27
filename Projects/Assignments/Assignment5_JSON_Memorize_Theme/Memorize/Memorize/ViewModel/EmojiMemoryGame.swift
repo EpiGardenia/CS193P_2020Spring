@@ -16,6 +16,11 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
 
+
+    static func printJSON(theme: Theme) {
+        
+    }
+
     init() {
         theme = Theme.themes.randomElement()!
         model = EmojiMemoryGame.createMemoryGame(theme: theme)
@@ -42,31 +47,12 @@ class EmojiMemoryGame: ObservableObject {
     func start() {
         theme = Theme.themes.randomElement()!
         model = EmojiMemoryGame.createMemoryGame(theme: theme)
+        print("json = \(theme.json?.utf8 ?? "nil")")
     }
 
 
+}
 
-
-    // MARK: - Theme Constants
-    struct Theme {
-        var name: String
-        var emojis: [String]
-        var color: Color
-        /* Required Task #1 */
-        var numberOfPairsOfCards: Int {
-            emojis.count
-        }
-
-    static let themes: [Theme] = {
-        [Theme(name: "Halloween", emojis: ["👻", "🎃", "🕷", "🍬", "🧙🏻", "🌕"], color: Color.orange),
-         Theme(name: "Animal", emojis: ["🐍", "🐷", "🐰", "🐑", "🐙", "🦑", "🐥", "🐯"], color: Color.purple),
-         Theme(name: "Sports", emojis: ["🏸", "🏀", "🏓", "🎱", "⚽️"], color: Color.gray),
-         Theme(name: "Food", emojis: ["🍣", "🍜", "🍔", "🥙", "🌮", "🥘", "🥗", "🥐", "🍕"], color: Color.yellow),
-         Theme(name: "Weather", emojis: ["☃️", "☀️", "☁️", "☔️", "🌦", "🌬"], color: Color.blue),
-         Theme(name: "Fruit", emojis: ["🍒", "🍊", "🍍", "🍉", "🍌", "🍓"], color: Color.pink),
-        ]
-    }()
-
-    }
-
+extension Data {
+    var utf8: String? { String(data: self, encoding: .utf8 ) }
 }

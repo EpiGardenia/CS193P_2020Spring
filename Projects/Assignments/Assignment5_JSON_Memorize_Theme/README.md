@@ -8,6 +8,16 @@ Each theme will now have its own specific, pre-defined number of  cards.
 In other words, how many cards are in a game is part of  the theme for that game and it can no longer be “random”. 
 
 ### Solution
+Change to emojis.count
+
+Note:
+If I define as below (computed var), it will show correctly, but it won't be shown in JSON.
+
+`var numberOfPairsOfCards: Int {
+    emoji.count
+}`
+
+If I initiate it in `init`, then it shows in JSON.
 
 
 
@@ -17,6 +27,11 @@ All elements of the theme (its name, the emojis to choose from, how many pairs o
 
 
 ### Solution
+The hint is to store RGBA CGFloat value struct, thus I implemented accordingly with reference of 
+https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/#system-colors
+
+However, due to Apple has different RGBA to different Light/Dark and Accessibility. 
+I personally prefer to use use colorName: String and store string-Color dictionary for it.
 
 
 
@@ -25,7 +40,4 @@ All elements of the theme (its name, the emojis to choose from, how many pairs o
 
 
 ## Result
-![Demo](Demo/Assignment5.gif)
-<br>
-<br>
-<img src="Demo/landscape.png" width="600" height="300">
+<img src="Demo/Assignment5.png" width="600" height="300">
