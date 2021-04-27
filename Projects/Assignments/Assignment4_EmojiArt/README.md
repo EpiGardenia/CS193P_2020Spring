@@ -1,5 +1,7 @@
 # Assignment 4 Emoji Art
 
+*** Task 6 and 8 doesn't exactly act as required, will come back to fix later ***
+
 ## Required Task 1
 Download Lecture 8 from website and start from it.
 

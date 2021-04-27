@@ -36,7 +36,10 @@ struct EmojiArtDocumentView: View {
                     .onTapGesture { document.clearSelectedEmojis() } // Required Task #5
 
                     ForEach(self.document.emojis) { emoji in
-                        let size = emoji.fontSize * self.emojiZoomScale /* Required Task #8 */
+                        let size = document.selectedEmojis.contains(emoji)  ?
+                            emoji.fontSize * self.emojiZoomScale :
+                            emoji.fontSize * self.zoomScale
+                        
                         Text(emoji.text)
                             .font(animatableWithSize: size)
                             .padding()
@@ -176,7 +179,9 @@ struct EmojiArtDocumentView: View {
         location = CGPoint(x: location.x * zoomScale, y: location.y * zoomScale)
         location = CGPoint(x: location.x + size.width/2, y: location.y + size.height/2)
         location = CGPoint(x: location.x + panOffset.width, y: location.y + panOffset.height)
+        if document.selectedEmojis.contains(emoji) {
         location = CGPoint(x: location.x + dragOffset.width, y: location.y + dragOffset.height)
+        }
         print("position: \(location.debugDescription)")
         return location
     }

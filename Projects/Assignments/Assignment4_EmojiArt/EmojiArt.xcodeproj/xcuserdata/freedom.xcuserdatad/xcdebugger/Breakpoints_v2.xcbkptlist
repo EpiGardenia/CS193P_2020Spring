@@ -14,8 +14,8 @@
             filePath = "EmojiArt/EmojiArtDocumentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "panGesture()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,9 +30,9 @@
             filePath = "EmojiArt/EmojiArtDocumentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "position(for:in:)"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "zoomToFit(_:in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
