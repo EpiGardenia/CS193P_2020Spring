@@ -17,11 +17,9 @@ struct EmojiMemoryGameView: View {
         viewModel = EmojiMemoryGame(theme: theme)
     }
 
-
     var body: some View {
         let color = viewModel.theme.color
         VStack {
-            Spacer()
             Text(viewModel.theme.name)
                 .font(.title)
             Text("\(viewModel.point)")
@@ -48,10 +46,10 @@ struct EmojiMemoryGameView: View {
 }
 
 
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())
-//    }
-//}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        EmojiMemoryGameView(theme: Theme.examples.first!)
+    }
+}
 

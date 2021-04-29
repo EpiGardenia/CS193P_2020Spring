@@ -23,7 +23,7 @@
 		1A9AD4472637F186001495C6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A9AD4462637F186001495C6 /* README.md */; };
 		1AB8D14126395D8400265A96 /* ThemeEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D14026395D8400265A96 /* ThemeEditorView.swift */; };
 		1AB8D14426395D9A00265A96 /* ThemeChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D14326395D9A00265A96 /* ThemeChooserView.swift */; };
-		1AB8D14726395E6000265A96 /* ThemeChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D14626395E6000265A96 /* ThemeChoices.swift */; };
+		1AB8D14726395E6000265A96 /* ThemeChoicesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D14626395E6000265A96 /* ThemeChoicesStore.swift */; };
 		1AB8D14A26395F4F00265A96 /* ThemeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D14926395F4F00265A96 /* ThemeRowView.swift */; };
 		1AB8D1502639B53100265A96 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D14F2639B53100265A96 /* CardView.swift */; };
 		1AB8D153263A8E9A00265A96 /* Array_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8D152263A8E9A00265A96 /* Array_String.swift */; };
@@ -48,7 +48,7 @@
 		1A9AD4462637F186001495C6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1AB8D14026395D8400265A96 /* ThemeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorView.swift; sourceTree = "<group>"; };
 		1AB8D14326395D9A00265A96 /* ThemeChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserView.swift; sourceTree = "<group>"; };
-		1AB8D14626395E6000265A96 /* ThemeChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChoices.swift; sourceTree = "<group>"; };
+		1AB8D14626395E6000265A96 /* ThemeChoicesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChoicesStore.swift; sourceTree = "<group>"; };
 		1AB8D14926395F4F00265A96 /* ThemeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRowView.swift; sourceTree = "<group>"; };
 		1AB8D14F2639B53100265A96 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1AB8D152263A8E9A00265A96 /* Array_String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array_String.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1A5E1EB725FA2992006EB207 /* EmojiMemoryGame.swift */,
-				1AB8D14626395E6000265A96 /* ThemeChoices.swift */,
+				1AB8D14626395E6000265A96 /* ThemeChoicesStore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -129,8 +129,8 @@
 			children = (
 				1A3BC41325FE796800F2BCD9 /* Grid.swift */,
 				1A5E1EC225FA2A3C006EB207 /* EmojiMemoryGameView.swift */,
-				1AB8D14026395D8400265A96 /* ThemeEditorView.swift */,
 				1AB8D14326395D9A00265A96 /* ThemeChooserView.swift */,
+				1AB8D14026395D8400265A96 /* ThemeEditorView.swift */,
 				1AB8D14926395F4F00265A96 /* ThemeRowView.swift */,
 				1AB8D14F2639B53100265A96 /* CardView.swift */,
 			);
@@ -227,7 +227,7 @@
 				1A5E1EDB25FA6177006EB207 /* Array+Identifiable.swift in Sources */,
 				1A9AD43E2637E0A2001495C6 /* Codable.swift in Sources */,
 				1A5E1EBB25FA2992006EB207 /* EmojiMemoryGame.swift in Sources */,
-				1AB8D14726395E6000265A96 /* ThemeChoices.swift in Sources */,
+				1AB8D14726395E6000265A96 /* ThemeChoicesStore.swift in Sources */,
 				1A9AD4412637E1D1001495C6 /* Theme.swift in Sources */,
 				1AB8D14426395D9A00265A96 /* ThemeChooserView.swift in Sources */,
 				1A5E1EDE25FA6E47006EB207 /* Array+Only.swift in Sources */,

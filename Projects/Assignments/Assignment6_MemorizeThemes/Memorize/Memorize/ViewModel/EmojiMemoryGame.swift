@@ -10,25 +10,19 @@ class EmojiMemoryGame: ObservableObject {
     let theme: Theme
     @Published var model: MemoryGame<String>
 
-
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         let num = theme.numberOfPairsOfCards
-        let numEmojis = theme.emojis.count
         var chosenEmojis = theme.emojis.shuffled()
-            chosenEmojis.removeLast(numEmojis - num)
+        chosenEmojis = chosenEmojis.takeFirst(k: num)
         return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { _ in
             return chosenEmojis.popLast()!
         }
     }
 
-
-
     init(theme: Theme) {
         self.theme = theme
         self.model = EmojiMemoryGame.createMemoryGame(theme: theme)
     }
-
-
 
     // MARK: - Access to the Model
     var cards: [MemoryGame<String>.Card] {
@@ -39,8 +33,6 @@ class EmojiMemoryGame: ObservableObject {
         model.point
     }
 
-
-
     // MARK: - Intent(s)
     func choose(card: MemoryGame<String>.Card) {
         model.choose(card: card)
@@ -48,10 +40,8 @@ class EmojiMemoryGame: ObservableObject {
 
     func start() {
         model = EmojiMemoryGame.createMemoryGame(theme: theme)
-        print("json = \(theme.json?.utf8 ?? "nil")")
+//        print("json = \(theme.json?.utf8 ?? "nil")")
     }
-
-
 }
 
 extension Data {

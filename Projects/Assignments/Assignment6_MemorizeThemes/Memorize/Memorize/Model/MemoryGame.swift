@@ -23,7 +23,6 @@ struct MemoryGame<CardContent> where CardContent: Hashable {
 
 
     mutating func choose(card: Card) {
-       // print("card chosen: \(card)")
         //" ," is like sequential And, the condition is checked in sequence
         if let chosenIndex = cards.firstIndex(matching: card), !cards[chosenIndex].isFaceUp, !cards[chosenIndex].isMatched {
             if let potentialMatchIndex = indexOfTheOnlyAndOnlyFaceUpCard {

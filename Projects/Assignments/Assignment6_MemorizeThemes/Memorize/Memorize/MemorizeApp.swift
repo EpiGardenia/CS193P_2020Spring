@@ -12,7 +12,7 @@ struct MemorizeApp: App {
     var body: some Scene {
         WindowGroup {
             ThemeChooserView()
-                .environmentObject(ThemeChoices())
+                .environmentObject(ThemeChoicesStore())
         }
     }
 }

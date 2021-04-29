@@ -19,7 +19,11 @@ struct Theme: Codable, Identifiable {
         return try? JSONEncoder().encode(self)
     }
 
-
+    static let minPair = 4
+    var maxPairs: Int {
+        return emojis.count
+    }
+    
     // return false if emoji already exist
     mutating func addEmoji(emoji: String) -> Bool {
         let result = emojis.insert(emoji)
