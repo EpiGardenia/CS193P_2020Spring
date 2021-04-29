@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct EmojiArtApp: App {
-    let store = EmojiArtDocumentStore(named: "Emoji Art")
+    let store = EmojiArtDocumentStore()
 
     var body: some Scene {
         WindowGroup {
