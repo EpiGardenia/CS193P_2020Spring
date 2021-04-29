@@ -11,7 +11,8 @@ import SwiftUI
 struct MemorizeApp: App {
     var body: some Scene {
         WindowGroup {
-            EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())  //To adapt Xcode12
+            ThemeChooserView()
+                .environmentObject(ThemeChoices())
         }
     }
 }

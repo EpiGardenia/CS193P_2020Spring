@@ -7,23 +7,25 @@
 
 import SwiftUI
 class EmojiMemoryGame: ObservableObject {
+    let theme: Theme
     @Published var model: MemoryGame<String>
-    var theme: Theme
+
 
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
-        return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
-            return theme.emojis[pairIndex]
+        let num = theme.numberOfPairsOfCards
+        let numEmojis = theme.emojis.count
+        var chosenEmojis = theme.emojis.shuffled()
+            chosenEmojis.removeLast(numEmojis - num)
+        return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { _ in
+            return chosenEmojis.popLast()!
         }
     }
 
 
-    static func printJSON(theme: Theme) {
-        
-    }
 
-    init() {
-        theme = Theme.themes.randomElement()!
-        model = EmojiMemoryGame.createMemoryGame(theme: theme)
+    init(theme: Theme) {
+        self.theme = theme
+        self.model = EmojiMemoryGame.createMemoryGame(theme: theme)
     }
 
 
@@ -45,7 +47,6 @@ class EmojiMemoryGame: ObservableObject {
     }
 
     func start() {
-        theme = Theme.themes.randomElement()!
         model = EmojiMemoryGame.createMemoryGame(theme: theme)
         print("json = \(theme.json?.utf8 ?? "nil")")
     }

@@ -10,6 +10,13 @@ struct EmojiMemoryGameView: View {
     // Redraw when viewModel do "objectWillChange.send()"
     // SwiftUI just updates the view which has change, not everything in whole views
     @ObservedObject var viewModel: EmojiMemoryGame 
+    let theme: Theme
+
+    init(theme: Theme) {
+        self.theme = theme
+        viewModel = EmojiMemoryGame(theme: theme)
+    }
+
 
     var body: some View {
         let color = viewModel.theme.color
@@ -36,48 +43,15 @@ struct EmojiMemoryGameView: View {
                     .padding()
             }
         } .foregroundColor(Color(color))
-    }
-}
 
-struct CardView: View {
-    let card: MemoryGame<String>.Card
-
-    var body: some View {
-        GeometryReader { geometry in
-            self.body(for: geometry.size)
-        }
-    }
-
-    func body(for size: CGSize) -> some View {
-        ZStack{
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
-                RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: lineWidth)
-                Text(card.content)
-            } else {
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
-                }
-            }
-        }
-        .font(Font.system(size: fontSize(for: size)))
-        //.aspectRatio(2/3, contentMode: .fit)
-    }
-
-
-    // MARK: - Drawing Constants
-    let cornerRadius: CGFloat = 10
-    let lineWidth: CGFloat = 3
-
-    func fontSize(for size: CGSize) -> CGFloat {
-        min(size.width, size.height)*0.75
     }
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())
+//    }
+//}
 

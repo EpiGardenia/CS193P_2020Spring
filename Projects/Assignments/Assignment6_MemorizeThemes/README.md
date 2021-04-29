@@ -20,6 +20,10 @@ https://cs193p.sites.stanford.edu/sites/g/files/sbiybj16636/files/media/file/ass
 
 8. The chooser must support an Edit Mode where you can delete themes and where you can access some UI (i.e. a button or image in each row) which will bring up a Theme Editor UI for that theme modally (i.e. via sheet or popover). 
 
+### Solution
+Due to it is only allowed one sheet/popover over one view, this popover need to be outside of foreach and also passing "selectedTheme" instead of "$showingThemeEditor", so it passes theme info correctly.
+
+
 9. The Theme Editor must use a Form. 
 
 10. In the Theme Editor, allow the user to edit the name of  the theme, to add emoji to the theme, to remove emoji from the theme and to specify how many cards are in the theme.  (It is Extra Credit to be able to edit the color of  the theme.) 
