@@ -3,18 +3,15 @@
 https://cs193p.sites.stanford.edu/sites/g/files/sbiybj16636/files/media/file/assignment_6.pdf
 
 ## Demo
-![Demo](Demo/Assignment6.gif)
+![Demo](Demo/Assignment6_iphone.gif)
 
 ### IPhone
-<img src="Demo/ThemeChooser_iphone.png" >
-<img src="Demo/ThemeChooser_Edit_iphone.png" >
-<img src="Demo/ThemeEditor_iphone.png" >
+<img src="Demo/ThemeChooser_iphone.png" width="300" height="600" > <img src="Demo/ThemeChooser_Edit_iphone.png" width="300" height="600"  >
+<img src="Demo/ThemeEditor_iphone.png" width="300" height="600"  >
 
 ### iPad
-<img src="Demo/ThemeChooser_IPad.png" >
-<img src="Demo/ThemeChooser_Edit_IPad.png" >
-<img src="Demo/ThemeEditor_IPad.png" >
-<img src="Demo/GameView_IPad.png" >
+<img src="Demo/ThemeChooser_IPad.png" width="440" height="600"  > <img src="Demo/ThemeChooser_Edit_IPad.png" width="440" height="600"  >
+<img src="Demo/ThemeEditor_IPad.png"  width="440" height="600" > <img src="Demo/GameView_IPad.png" width="600" height="440"  >
 
 
 
@@ -77,10 +74,6 @@ When User Add or Remove Emoji, the max limit of pairsOfCard stepper will update 
 7. Provide some UI to add a new theme to the List in your chooser. 
 
 8. The chooser must support an Edit Mode where you can delete themes and where you can access some UI (i.e. a button or image in each row) which will bring up a Theme Editor UI for that theme modally (i.e. via sheet or popover). 
-
-### Solution
-Due to it is only allowed one sheet/popover over one view, this popover need to be outside of foreach and also passing "selectedTheme" instead of "$showingThemeEditor", so it passes theme info correctly.
-
 
 9. The Theme Editor must use a Form. 
 
