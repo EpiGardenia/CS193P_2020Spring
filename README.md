@@ -4,9 +4,9 @@ https://cs193p.sites.stanford.edu/
 
 ## Projects
 ### Assignments 
-I am benefited a lot from others' knowledge sharing. <br>
-Hope my codes can also inspire people in this challenging journey.
-<br>
+There are 6 assignments in this course. Here are my implementation:
+
+<br><br>
  * [Assignment 1: Memorize](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment1)
  * [Assignment 2: More Memorize](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment2)
  * [Assignment 3: Set Game](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/Assignment3_SetGame)
@@ -16,7 +16,7 @@ Hope my codes can also inspire people in this challenging journey.
 <br><br>
 
 ### Lectures
-Lecture code followed in lectures or demo code with my change (adapt to Xcode12, or adding notes)
+Lecture code followed in lectures or demo code with my comments (adapt to Xcode12, or adding notes)
 * [Lecture 2: MVVM and the Swift Type System](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture2)
 * [Lecture 3: Reactive UI Protocols Layout](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture3)
 * [Lecture 4: Grid enum Optionals](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture4)
@@ -26,7 +26,7 @@ Lecture code followed in lectures or demo code with my change (adapt to Xcode12,
 * [Lecture 8: Gesture JSON](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture8)
 * [Lecture 9: Data Flow](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture9)
 * [Lecture 10: Modal Presentation and Navigation](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture10)
-* [Lecture 11: Enroute Picker](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture11/Enroute L11)
+* [Lecture 11: Enroute Picker](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture11)
 * [Lecture 12: Core Data](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture12)
 <br><br>
 ## CS193p_2020Sprint_Original_Materials.zip
