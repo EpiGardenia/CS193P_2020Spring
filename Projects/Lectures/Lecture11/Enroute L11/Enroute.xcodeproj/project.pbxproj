@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A6CA674263C29F000299D6D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A6CA673263C29F000299D6D /* README.md */; };
 		DA47A9B32469D48100C8E13C /* Airlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA47A9B12469D48100C8E13C /* Airlines.swift */; };
 		DA47A9B42469D48100C8E13C /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA47A9B22469D48100C8E13C /* Airports.swift */; };
 		DA47A9B62469D48900C8E13C /* FlightFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA47A9B52469D48900C8E13C /* FlightFetcher.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A6CA673263C29F000299D6D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA47A9B12469D48100C8E13C /* Airlines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airlines.swift; sourceTree = "<group>"; };
 		DA47A9B22469D48100C8E13C /* Airports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
 		DA47A9B52469D48900C8E13C /* FlightFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightFetcher.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		DAB658972467944B00A0F2BB = {
 			isa = PBXGroup;
 			children = (
+				1A6CA673263C29F000299D6D /* README.md */,
 				DAB658A22467944B00A0F2BB /* Enroute */,
 				DAB658A12467944B00A0F2BB /* Products */,
 			);
@@ -143,7 +146,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Stanford University";
 				TargetAttributes = {
 					DAB6589F2467944B00A0F2BB = {
@@ -176,6 +179,7 @@
 			files = (
 				DAB658B32467944C00A0F2BB /* LaunchScreen.storyboard in Resources */,
 				DAB658B02467944C00A0F2BB /* Preview Assets.xcassets in Resources */,
+				1A6CA674263C29F000299D6D /* README.md in Resources */,
 				DAB658AD2467944C00A0F2BB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +248,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -304,6 +309,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -338,14 +344,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Enroute/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K8YVKLM6GZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Enroute/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs193p.instructor.Enroute;
+				PRODUCT_BUNDLE_IDENTIFIER = Freedom.Enroute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,14 +364,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Enroute/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K8YVKLM6GZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Enroute/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs193p.instructor.Enroute;
+				PRODUCT_BUNDLE_IDENTIFIER = Freedom.Enroute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
