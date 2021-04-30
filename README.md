@@ -5,8 +5,6 @@ https://cs193p.sites.stanford.edu/
 ## Projects
 ### Assignments 
 There are 6 assignments in this course. Here are my implementation:
-
-<br><br>
  * [Assignment 1: Memorize](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment1)
  * [Assignment 2: More Memorize](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/CS193p_2020_Assignment2)
  * [Assignment 3: Set Game](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Assignments/Assignment3_SetGame)
