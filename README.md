@@ -26,6 +26,8 @@ Lecture code followed in lectures or demo code with my change (adapt to Xcode12,
 * [Lecture 8: Gesture JSON](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture8)
 * [Lecture 9: Data Flow](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture9)
 * [Lecture 10: Modal Presentation and Navigation](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture10)
+* [Lecture 11: Enroute Picker](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture11/Enroute L11)
+* [Lecture 12: Core Data](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture12)
 <br><br>
 ## CS193p_2020Sprint_Original_Materials.zip
 zip of Original Course Materials, for quick download.
