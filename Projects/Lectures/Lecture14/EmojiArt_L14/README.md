@@ -7,20 +7,26 @@ UIViewControllerRepresentable
 ### ImagePicker
 
 Alt1:  @Binding
-    `ImagePicker(image: $selectedImage)`
+ ```swift
+    ImagePicker(image: $selectedImage)
+ ```
+    
 
 Alt2 (in Lecture) :  
 
-    `typealias PickedImageHandler = (UIImage?) -> Void
+ ```swift
+    typealias PickedImageHandler = (UIImage?) -> Void
 
     init(handlePickedImage: @escaping PickedImageHandler) {
         self.handlePickedImage = handlePickedImage
-    }`
+    }
+ ```
 
   call from View:
-  `ImagePicker(sourceType: self.imagePickerSourceType) { image in 
-    ...
-    `
+```swift
+   ImagePicker(sourceType: self.imagePickerSourceType) { image in 
+
+```
 
 
 
@@ -30,8 +36,9 @@ Alt2 (in Lecture) :
 
 To avoid crash when there is no camera (t.e.x, simulator):
 
-`if UIImagePickerController.isSourceTypeAvailable(.camera) {`
-
+```swift
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+```
 
 ### Camera and Photo choosing can share the same Imagepicker
 Just by passing in different ` picker.sourceType`
