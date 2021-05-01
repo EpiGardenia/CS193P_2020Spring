@@ -27,6 +27,7 @@ Lecture code followed in lectures or demo code with my comments (adapt to Xcode1
 * [Lecture 11: Enroute Picker](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture11)
 * [Lecture 12: Core Data](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture12)
 * [Lecture 13: Persistent](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture13)
+* [Lecture 14: UI Integration](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture14)
 <br><br>
 ## CS193p_2020Sprint_Original_Materials.zip
 zip of Original Course Materials, for quick download.
