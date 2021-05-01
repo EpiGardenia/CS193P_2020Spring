@@ -14,13 +14,14 @@ If there is already a same name, add incrementing number at the end.
 ## Get DocumentStore look into File System 
 
 
-`
+```swift 
     let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let store = EmojiArtDocumentStore(directory: url)
-`
+```
 
 
-`do {
+```swift 
+do {
     let documents = try FileManager.default.contentsOfDirectory(atPath: directory.path)
     for document in documents {
         let emojiArtDocument = EmojiArtDocument(url: directory.appendingPathComponent(document))
@@ -28,13 +29,15 @@ If there is already a same name, add incrementing number at the end.
     }
     } catch {
         print("EmojiArtDocumentStore: couldn't create store from directory \(directory): \(error.localizedDescription)")
-}`
+} 
+```
 
 
 ## Others
 
 ### Add extension for String collection
-`extension String
+```swift 
+extension String 
 {
         func uniqued<StringCollection>(withRespectTo otherStrings: StringCollection) -> String
             where StringCollection: Collection, StringCollection.Element == String {
@@ -43,4 +46,5 @@ If there is already a same name, add incrementing number at the end.
             unique = unique.incremented
         }
         return unique
-}`
+}
+```
