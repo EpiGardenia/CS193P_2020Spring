@@ -4,7 +4,9 @@
 ## Basic Structure
 
 
-    `struct MapView: UIViewRepresentable {
+
+```swift 
+    struct MapView: UIViewRepresentable {
         func makeUIView(context: Context) -> MKMapView {
             let mkMapView = MKMapView()
             mkMapView.delegate = context.coordinator
@@ -20,7 +22,8 @@
 
         class Coordinator: NSObject, MKMapViewDelegate {
         }
-    } `
+    } 
+ ```
 
 
 
@@ -32,7 +35,8 @@
 
 Make the entity of annotation conform `MKAnnotation` protocol, and implement `coordinate` function
 
-    `extension Airport: MKAnnotation {
+      ```swift
+      extension Airport: MKAnnotation {
         func coordinator ...
     }`
 
@@ -42,17 +46,19 @@ Make the entity of annotation conform `MKAnnotation` protocol, and implement `co
 ###  Destination Airport  in Text -> Map annotation
 
 To update center annotation in map, we can pass in
-    `
+   
+```swift 
     @State private var draft: FlightSearch
-    MapView(annotations: airports.sorted(), selection: draft.destination)`
+    MapView(annotations: airports.sorted(), selection: draft.destination)
+```
 
 while 
-    `
+     
+```swift 
     struct MapView: UIViewRepresentable {
         let annotations: [MKAnnotation]
         var selection: MKAnnotation?
-        ...
-    `
+ ```
 
 
 ### Choose Annotation in Map -> Change Destination Airport in Text
@@ -64,9 +70,10 @@ How about the data input  `MapView(... , selction: draft.destination)` ?
 If draft is `@ObservedObject`, change it to `$draft.destination` would work.
 But draft is `@State`, the binding of State binds to the entire struct (FlightSearch), can't bind to a variable under the struct
 
-The solution is to use `.., selection: destination`:
+The solution is to use `, selection: destination`:
 
-    ` 
+     
+```swift 
     var destination: Binding<MKAnnotation?> {
         return Binding<MKAnnotation?>(
             get: { return self.draft.destination },
@@ -77,4 +84,4 @@ The solution is to use `.., selection: destination`:
         }
     )
     }
-    `
+  ```
