@@ -35,10 +35,11 @@
 
 Make the entity of annotation conform `MKAnnotation` protocol, and implement `coordinate` function
 
-      ```swift
+```swift
       extension Airport: MKAnnotation {
         func coordinator ...
-    }`
+    }
+```
 
 
 ## @Binding, @State, @ObservedObject
@@ -78,10 +79,10 @@ The solution is to use `, selection: destination`:
         return Binding<MKAnnotation?>(
             get: { return self.draft.destination },
             set: { annotation in
-            if let airport = annotation as? Airport {
-            self.draft.destination = airport
-            }
-        }
-    )
+                if let airport = annotation as? Airport {
+                self.draft.destination = airport
+                }
+               }
+           )
     }
   ```
