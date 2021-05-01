@@ -22,16 +22,18 @@ listen to @published parameter and do handling
 ### `dataTaskPublisher`
 
 Use this to replace DispatchQueue.global to handle data and then passing..etc
-`
+```swift
 fetchImageCancellable = URLSession.shared.dataTaskPublisher(for: url)
                                                 .map { data, urlResponse in UIImage(data: data) }
                                                 .receive(on: DispatchQueue.main)
                                                 .replaceError(with: nil)
                                                 .assign(to: \.backgroundImage, on: self)
-`
+```
 
 with 
-` fetchImageCancellable?.cancel() `
+```swift
+fetchImageCancellable?.cancel() 
+```
 Assure image in process is the latest one by cancel previous task before process a new url
 
 
