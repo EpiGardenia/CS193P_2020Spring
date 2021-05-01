@@ -6,4 +6,4 @@ MapKit
 
 ## UIViewControllerRepresentable
 ImagePicker (Photo, Camera)
-[EmojiArt L14](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture14/EmojiArt_14)
+[EmojiArt L14](https://github.com/EpiGardenia/CS193P_2020Spring/tree/master/Projects/Lectures/Lecture14/EmojiArt_L14)
